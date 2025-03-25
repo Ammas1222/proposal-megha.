@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .move-btn:hover {
+            position: absolute;
+            transform: translate(
+                ${Math.random() * 200}px,
+                ${Math.random() * 200}px
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart"></div>
+        <h1>I really like you...</h1>
+        <p>Would you give me a chance to be more than just an online friend?</p>
+        <div class="buttons">
+            <button onclick="accepted()" class="start-btn">Yes</button>
+            <button id="noBtn" class="start-btn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            const x = Math.random() * (containerRect.width - 100);
+            const y = Math.random() * (containerRect.height - 50);
+            
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function accepted() {
+            alert('Thank you for making me the happiest person! ❤️');
+            document.querySelector('.container').innerHTML = `
+                <div class="heart"></div>
+                <h1>You made my day! ❤️</h1>
+                <p>Thank you for saying YES!</p>
+            `;
+        }
+    </script>
+</body>
+</html>
